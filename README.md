@@ -1,4 +1,5 @@
 # Snake Legends
+![Preview](preview.png)
 
 A browser-based game I built and published on itch.io.
 
