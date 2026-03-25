@@ -3,7 +3,7 @@
 A game published on itch.io.
 
 ## 🎮 Play the Game
-👉 https://your-itch-link-here
+👉 https://roquedesouza209-developer.itch.io/snake-legends
 
 ## 📌 Overview
 Snake Legends is a game built and published to explore gameplay mechanics and user interaction.
