@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snake Legends — Visualixe</title>
+  <meta name="description" content="Snake Legends by Visualixe — a polished HTML5 snake arcade game for itch.io." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-theme="dark">
+  <div id="introScreen" class="screen active">
+    <div class="intro-bg"></div>
+    <div class="intro-card glass">
+      <img src="assets/visualixe.png" alt="Visualixe logo" class="intro-logo" />
+      <div class="intro-copy">
+        <p class="eyebrow">Visualixe presents</p>
+        <h1>Snake Legends</h1>
+        <p class="subtitle">Think. Create. Innovate.</p>
+        <div class="intro-progress"><span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="appShell" class="app-shell hidden">
+    <header class="topbar glass">
+      <div class="brand-wrap">
+        <img src="assets/visualixe.png" alt="Visualixe" class="brand-logo" />
+        <div>
+          <p class="brand-kicker">Visualixe</p>
+          <h2>Snake Legends</h2>
+        </div>
+      </div>
+
+      <div class="hud-grid">
+        <div class="hud-pill"><span>Score</span><strong id="score">0</strong></div>
+        <div class="hud-pill"><span>High</span><strong id="highscore">0</strong></div>
+        <div class="hud-pill"><span>Level</span><strong id="currentLevel">1</strong></div>
+        <div class="hud-pill"><span>Difficulty</span><strong id="difficultyLabel">Medium</strong></div>
+      </div>
+
+      <div class="toolbar">
+        <button id="homeBtn" class="icon-btn" title="Home">⌂</button>
+        <button id="pauseBtn" class="icon-btn" title="Pause">⏸</button>
+        <button id="restartBtn" class="icon-btn" title="Restart">↺</button>
+        <button id="settingsBtn" class="icon-btn" title="Themes & Settings">⚙</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="side-panel glass">
+        <section>
+          <h3>Game Menu</h3>
+          <div class="menu-grid compact">
+            <button id="newGameBtn" class="menu-btn primary"><span>🎮</span><div><strong>New Game</strong><small>Start fresh</small></div></button>
+            <button id="resumeBtn" class="menu-btn"><span>▶</span><div><strong>Resume Game</strong><small>Continue saved run</small></div></button>
+            <button id="scoresBtn" class="menu-btn"><span>🏆</span><div><strong>Scores</strong><small>See leaderboard</small></div></button>
+          </div>
+        </section>
+
+        <section>
+          <h3>Difficulty</h3>
+          <div id="difficultyOptions" class="chip-wrap"></div>
+        </section>
+
+        <section>
+          <h3>Themes</h3>
+          <div id="themeOptions" class="chip-wrap theme-wrap"></div>
+        </section>
+
+        <section>
+          <h3>Achievements</h3>
+          <div id="achievementList" class="achievement-list"></div>
+        </section>
+      </aside>
+
+      <section class="game-stage">
+        <div class="canvas-shell glass">
+          <div class="canvas-header">
+            <div>
+              <p class="eyebrow">Arcade mode</p>
+              <h3 id="stageTitle">Level 1 · Neon Garden</h3>
+            </div>
+            <div class="mini-stats">
+              <div><span>Lives</span><strong id="lives">1</strong></div>
+              <div><span>Best Run</span><strong id="bestRun">0</strong></div>
+            </div>
+          </div>
+          <div class="canvas-wrapper">
+            <canvas id="gameCanvas" width="720" height="720" aria-label="Snake Legends Game Canvas"></canvas>
+            <div id="overlayMessage" class="overlay-message hidden"></div>
+            <div id="touchControls" class="touch-controls">
+              <button data-dir="up">▲</button>
+              <div class="touch-row">
+                <button data-dir="left">◀</button>
+                <button data-dir="down">▼</button>
+                <button data-dir="right">▶</button>
+              </div>
+            </div>
+          </div>
+          <div class="canvas-footer">
+            <div class="legend-pill">🍎 Apple = +1</div>
+            <div class="legend-pill">💎 Gem = +5</div>
+            <div class="legend-pill">⚡ Power-ups = boosts</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="mainMenuModal" class="modal active">
+    <div class="modal-card glass menu-modal">
+      <p class="eyebrow">Welcome to the arena</p>
+      <h2>Snake Legends</h2>
+      <p class="modal-copy">A premium Visualixe arcade snake game built for browser play and itch.io publishing.</p>
+      <div class="menu-grid">
+        <button data-action="new" class="menu-btn primary"><span>🎮</span><div><strong>New Game</strong><small>Start a new run</small></div></button>
+        <button data-action="resume" class="menu-btn"><span>▶</span><div><strong>Resume Game</strong><small>Continue saved progress</small></div></button>
+        <button data-action="scores" class="menu-btn"><span>🏆</span><div><strong>Scores</strong><small>Top local players</small></div></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="settingsModal" class="modal hidden">
+    <div class="modal-card glass wide">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow">Customization</p>
+          <h2>Settings & Themes</h2>
+        </div>
+        <button id="closeSettingsBtn" class="icon-btn">✕</button>
+      </div>
+      <div class="settings-grid">
+        <section>
+          <h3>Choose Theme</h3>
+          <div id="themeOptionsModal" class="chip-wrap theme-wrap"></div>
+        </section>
+        <section>
+          <h3>Choose Difficulty</h3>
+          <div id="difficultyOptionsModal" class="chip-wrap"></div>
+        </section>
+        <section>
+          <h3>Publishing Notes</h3>
+          <p class="settings-note">This build includes menu flow, pause, resume, local scores, particles, achievements, theme packs, touch controls, obstacles, and a realistic snake style.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div id="scoresModal" class="modal hidden">
+    <div class="modal-card glass">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow">Hall of fame</p>
+          <h2>Top Scores</h2>
+        </div>
+        <button id="closeScoresBtn" class="icon-btn">✕</button>
+      </div>
+      <div id="leaderboardList" class="leaderboard-list"></div>
+    </div>
+  </div>
+
+  <div id="gameOverModal" class="modal hidden">
+    <div class="modal-card glass center">
+      <p class="eyebrow">Run finished</p>
+      <h2>Game Over</h2>
+      <p class="modal-copy">Final score: <strong id="finalScore">0</strong></p>
+      <div class="menu-grid compact single-row">
+        <button id="playAgainBtn" class="menu-btn primary"><span>↺</span><div><strong>Play Again</strong><small>Instant restart</small></div></button>
+        <button id="goMenuBtn" class="menu-btn"><span>⌂</span><div><strong>Main Menu</strong><small>Back to home</small></div></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="achievementToast" class="achievement-toast hidden"></div>
+
+  <script src="game.js"></script>
+</body>
+</html>
