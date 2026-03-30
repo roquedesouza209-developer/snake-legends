@@ -1,27 +1,42 @@
-# Snake Legends
-![Preview](preview.png)
+# 🎮 SNAKE LEGENDS
 
-A browser-based game I built and published on itch.io.
+```md
+# Snake Legends
+
+A browser-based game exploring gameplay systems, interaction design, and product deployment.
+
 
 ## 🎮 Play the Game
+
 👉 https://roquedesouza209-developer.itch.io/snake-legends
 
-## 🧠 Overview
-Snake Legends is a simple but engaging game built to explore gameplay mechanics, user interaction, and deployment.
 
-## 🚀 What I Did
-- Designed and developed the full game  
-- Structured gameplay logic and controls  
-- Published and deployed the game on itch.io  
-- Tested user interaction and experience  
+## 🚀 Overview
+
+Snake Legends is a lightweight browser game built and deployed to explore game logic, responsiveness, and user interaction.
+
+
+## ✨ Features
+
+- Classic snake gameplay  
+- Smooth controls  
+- Score tracking  
+- Browser-based play  
+
 
 ## 🛠 Tech Stack
+
 - HTML  
 - CSS  
 - JavaScript  
 
-## 📌 Why I Built This
-I wanted to move beyond just building projects and actually ship something people can play and interact with.
 
-## 🚧 Status
-Published and playable
+## 🌍 Why This Project
+
+Built to move beyond prototypes and actually ship a complete, playable product.
+
+## 🚧 Future Improvements
+
+- Levels and progression  
+- Leaderboards  
+- Mobile optimization  
